@@ -3,10 +3,12 @@ import {strftime, makeFormatter, makeRelativeFormat, isDayFirst, isThisYear, isY
 export default class RelativeTime {
   date: Date
   locale: string
+  isPhrase: boolean
 
-  constructor(date: Date, locale: string) {
+  constructor(date: Date, locale: string, isPhrase = true) {
     this.date = date
     this.locale = locale
+    this.isPhrase = isPhrase
   }
 
   toString(): string {
@@ -18,7 +20,7 @@ export default class RelativeTime {
       if (ahead) {
         return ahead
       } else {
-        return `on ${this.formatDate()}`
+        return this.getFormattedDate()
       }
     }
   }
@@ -181,6 +183,31 @@ export default class RelativeTime {
       return formatter.format(this.date)
     } else {
       return strftime(this.date, '%l:%M%P')
+    }
+  }
+
+  getFormattedDate(): string {
+    let formattedDate = ''
+
+    try {
+      const options: Intl.DateTimeFormatOptions = {year: 'numeric', month: 'short', day: 'numeric'}
+      formattedDate = this.date.toLocaleDateString(this.locale, options)
+    } catch (e) {
+      if (e instanceof RangeError) {
+        formattedDate = this.formatDate()
+      } else {
+        throw e
+      }
+    }
+
+    if (this.isPhrase) {
+      if (this.locale === 'fr' || this.locale.startsWith('fr-')) {
+        return `le ${formattedDate}`
+      } else {
+        return `on ${formattedDate}`
+      }
+    } else {
+      return formattedDate
     }
   }
 }

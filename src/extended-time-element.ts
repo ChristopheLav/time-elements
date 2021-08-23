@@ -1,4 +1,4 @@
-import {makeFormatter} from './utils'
+import {makeFormatter, localeFromElement} from './utils'
 
 const datetimes = new WeakMap()
 
@@ -74,7 +74,7 @@ export default class ExtendedTimeElement extends HTMLElement {
       return formatter.format(date)
     } else {
       try {
-        return date.toLocaleString()
+        return date.toLocaleString(localeFromElement(this))
       } catch (e) {
         if (e instanceof RangeError) {
           return date.toString()

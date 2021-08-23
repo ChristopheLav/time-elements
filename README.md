@@ -1,3 +1,19 @@
+# Fork Information
+
+This is a fork of the original GitHub `time-elements` components.
+
+The fork contains these improvements:
+- added an option to disable the "on..." wording for relative time (> 1 month)
+- added localization of the "on..." wording for relative time
+
+To keep the link with the parent version, the patch number is incremented by `(patch + 1) * 1000` (+1 for each iteration).
+
+Version example: 
+- GitHub version is 4.5.0, the forked version will be 4.5.1000 (1001, 1002 and so on).
+- GitHub version is 4.5.6, the forked version will be 4.5.7000 (7001, 7002 and so on).
+
+---
+
 # &lt;time&gt; element extensions
 
 Formats a timestamp as a localized string or as relative text that auto-updates in the user's browser.
