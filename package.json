@@ -17,10 +17,10 @@
     "prepublishOnly": "npm run build",
     "pretest": "npm run build",
     "test": "TZ=Asia/Dubai karma start ./test/karma.config.cjs",
-    "postpublish": "npm publish --ignore-scripts --@github:registry='https://npm.pkg.github.com'"
+    "postpublish": "npm publish --ignore-scripts --@christophelav:registry='https://npm.pkg.github.com'"
   },
   "prettier": "@github/prettier-config",
-  "repository": "github/time-elements",
+  "repository": "ChristopheLav/time-elements",
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
     "chai": "^4.3.4",
