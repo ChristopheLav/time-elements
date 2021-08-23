@@ -3,8 +3,8 @@
 This is a fork of the original GitHub `time-elements` components.
 
 The fork contains these improvements:
-- added an option to disable the "on..." wording for relative time (> 1 month)
-- added localization of the "on..." wording for relative time
+- added an option (`is-phrase` property) to disable the "on..." wording for relative time (> 1 month)
+- added localization (fr + en) of the "on..." wording for relative time
 
 To keep the link with the parent version, the patch number is incremented by `(patch + 1) * 1000` (+1 for each iteration).
 
